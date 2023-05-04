@@ -63,4 +63,4 @@ const main = async (srcDir, destPath) => {
 
 main(srcDirPath, destFilePath);
 
-exports.module = { mergeStyles };
+module.exports = { mergeStyles };
