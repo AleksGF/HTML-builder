@@ -7,10 +7,10 @@ const main = async () => {
     const fd = await fs.open(path.join(__dirname, 'text.txt'), 'w');
     const output = fd.createWriteStream({encoding: 'utf8'});
     stdin.pipe(output);
-    stdout.write('Enter something to be written to the file:\n');
+    stdout.write('Enter something to be written to the file (type "exit" to finish):\n');
     stdin.on('data', (data) => {
       if (data.toString().toLowerCase().includes('exit')) exit(1);
-      exit();
+      stdout.write('The message was written to the file. Do you want to add more (type "exit" to finish):\n');
     });
     process.on('exit', (code) => {
       let msg = '';
